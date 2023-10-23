@@ -25,18 +25,16 @@ public class Reload extends BreakBuddingAmethystSubCommand {
     public void perform(CommandSender commandSender, String[] args) {
         if (commandSender instanceof Player) {
             Player player = ((Player) commandSender).getPlayer();
-            if (player.hasPermission("bba.admin") && args.length == 1) {
-                Files.reload();
-                player.sendMessage(Message.chatFormatter(config.getString("reloaded")));
-            } else {
-                player.sendMessage(Message.chatFormatter(config.getString("no-permission")));
-            }
+            boolean hasPermissionAndArgsLengthOne = player.hasPermission("bba.admin") && args.length == 1;
+            (hasPermissionAndArgsLengthOne ? player : commandSender)
+                    .sendMessage(Message.chatFormatter(hasPermissionAndArgsLengthOne ? config.getString("reloaded") : config.getString("no-permission")));
         } else {
             if (args.length == 1) {
                 Files.reload();
                 commandSender.sendMessage(Message.chatFormatter(config.getString("reloaded")));
             }
         }
+
 
     }
 }

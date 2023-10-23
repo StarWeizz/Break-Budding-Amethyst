@@ -15,6 +15,8 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import static fr.starweizz.BreakBuddingAmethyst.Config.Config.config;
+
 public class Main extends JavaPlugin implements Listener {
 
     public static Main instance;
@@ -31,7 +33,7 @@ public class Main extends JavaPlugin implements Listener {
                 " |    |   \\ |  | \\/\\  ___/ / __ \\|    <     |    |   \\  |  / /_/ / /_/ | |  |   |  \\/ /_/  >   /    |    \\  Y Y  \\  ___/|  | |   Y  \\___  |\\___ \\  |  |  \n" +
                 " |______  / |__|    \\___  >____  /__|_ \\    |______  /____/\\____ \\____ | |__|___|  /\\___  /    \\____|__  /__|_|  /\\___  >__| |___|  / ____/____  > |__|  \n" +
                 "        \\/              \\/     \\/     \\/           \\/           \\/    \\/         \\//_____/             \\/      \\/     \\/          \\/\\/         \\/        ");
-        saveDefaultConfig();
+        saveConfig();
         this.getServer().getPluginManager().registerEvents(this, this);
         getCommand("breakbuddingamethyst").setExecutor((CommandExecutor) new BreakBuddingAmethyst());
         sendMessage("&f" + getName() + " " + getDescription().getVersion() + " &aEnabled!");
@@ -52,18 +54,16 @@ public class Main extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         ItemStack itemStack = player.getInventory().getItemInMainHand();
         Location location = event.getBlock().getLocation().add(0.5D, 0.5D, 0.5D);
-
         event.setDropItems(false);
 
         if (!itemStack.getType().toString().toLowerCase().contains("pickaxe")) return;
 
-        if (player.hasPermission("bba.break")) {
-            location.getWorld().dropItem(location, new ItemStack(Material.BUDDING_AMETHYST));
-        } else if (player.hasPermission("bba.silk")) {
-            if (!itemStack.containsEnchantment(Enchantment.SILK_TOUCH)) return;
-
+        if (config.getBoolean("enable-permissions")) {
+            if (player.hasPermission("bba.break") || (player.hasPermission("bba.silk") && itemStack.containsEnchantment(Enchantment.SILK_TOUCH))) {
+                location.getWorld().dropItem(location, new ItemStack(Material.BUDDING_AMETHYST));
+            }
+        } else {
             location.getWorld().dropItem(location, new ItemStack(Material.BUDDING_AMETHYST));
         }
-
     }
 }

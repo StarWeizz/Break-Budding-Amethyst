@@ -1,5 +1,7 @@
 package fr.starweizz.BreakBuddingAmethyst.Command;
 
+import fr.starweizz.BreakBuddingAmethyst.Command.Sub.Reload;
+import fr.starweizz.BreakBuddingAmethyst.Utils.Message;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,9 +18,13 @@ public class BreakBuddingAmethyst implements CommandExecutor, TabCompleter {
 
     private final ArrayList<BreakBuddingAmethystSubCommand> BreakBuddingAmethystSubCommand = new ArrayList<>();
 
+    public BreakBuddingAmethyst() {
+        this.BreakBuddingAmethystSubCommand.add(new Reload());
+    }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (strings.length > 0)
+        if (strings.length > 0) {
             for (BreakBuddingAmethystSubCommand commands : this.BreakBuddingAmethystSubCommand.toArray(new BreakBuddingAmethystSubCommand[0])) {
                 if (strings[0].equals(commands.getName())) {
                     try {
@@ -28,6 +34,9 @@ public class BreakBuddingAmethyst implements CommandExecutor, TabCompleter {
                     }
                 }
             }
+        } else {
+            commandSender.sendMessage(Message.chatFormatter("&fUsage : /bba <arguments>"));
+        }
         return true;
     }
 
