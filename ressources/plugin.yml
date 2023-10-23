@@ -1,0 +1,6 @@
+name: BreakBuddingAmethyst
+main: fr.starweizz.BreakBuddingAmethyst.Main
+version: 1.0
+api-version: 1.17
+author: StarWeizz
+description: Allow you to break budding amethyst

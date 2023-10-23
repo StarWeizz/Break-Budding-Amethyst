@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="BreakBuddingAmethyst">
+    <output-path>$PROJECT_DIR$/out/artifacts/BreakBuddingAmethyst</output-path>
+    <root id="archive" name="BreakBuddingAmethyst.jar">
+      <element id="module-output" name="Break Budding Amethyst" />
+    </root>
+  </artifact>
+</component>
