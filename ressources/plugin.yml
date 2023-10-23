@@ -4,3 +4,11 @@ version: 1.0
 api-version: 1.17
 author: StarWeizz
 description: Allows you to break budding amethyst
+commands:
+  breakbuddingamethyst:
+    description: Allows you to manage bba.
+    default: op
+    permission: bba.admin
+    usage: /bba
+    aliases:
+      - bba

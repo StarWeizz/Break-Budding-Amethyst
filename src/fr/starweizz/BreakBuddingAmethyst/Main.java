@@ -1,9 +1,11 @@
 package fr.starweizz.BreakBuddingAmethyst;
 
+import fr.starweizz.BreakBuddingAmethyst.Command.BreakBuddingAmethyst;
 import fr.starweizz.BreakBuddingAmethyst.Utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,6 +33,7 @@ public class Main extends JavaPlugin implements Listener {
                 "        \\/              \\/     \\/     \\/           \\/           \\/    \\/         \\//_____/             \\/      \\/     \\/          \\/\\/         \\/        ");
         saveDefaultConfig();
         this.getServer().getPluginManager().registerEvents(this, this);
+        getCommand("breakbuddingamethyst").setExecutor((CommandExecutor) new BreakBuddingAmethyst());
         sendMessage("&f" + getName() + " " + getDescription().getVersion() + " &aEnabled!");
     }
 
