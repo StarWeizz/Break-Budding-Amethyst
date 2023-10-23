@@ -29,11 +29,13 @@ public class Main extends JavaPlugin implements Listener {
                 " |    |   \\ |  | \\/\\  ___/ / __ \\|    <     |    |   \\  |  / /_/ / /_/ | |  |   |  \\/ /_/  >   /    |    \\  Y Y  \\  ___/|  | |   Y  \\___  |\\___ \\  |  |  \n" +
                 " |______  / |__|    \\___  >____  /__|_ \\    |______  /____/\\____ \\____ | |__|___|  /\\___  /    \\____|__  /__|_|  /\\___  >__| |___|  / ____/____  > |__|  \n" +
                 "        \\/              \\/     \\/     \\/           \\/           \\/    \\/         \\//_____/             \\/      \\/     \\/          \\/\\/         \\/        ");
-        saveConfig();
+        saveDefaultConfig();
+        this.getServer().getPluginManager().registerEvents(this, this);
+        sendMessage("&f" + getName() + " " + getDescription().getVersion() + " &aEnabled!");
     }
 
     public void onDisable() {
-        sendMessage("&cDisabled &f" + getName() + " " + getDescription().getVersion());
+        sendMessage("&f" + getName() + " " + getDescription().getVersion() + " &cDisabled!");
     }
 
     public void sendMessage(String message) {
