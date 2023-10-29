@@ -4,7 +4,7 @@
 #    |    |   \ |  | \/\  ___/ / __ \|    <     |    |   \  |  / /_/ / /_/ | |  |   |  \/ /_/  >   /    |    \  Y Y  \  ___/|  | |   Y  \___  |\___ \  |  |
 #    |______  / |__|    \___  >____  /__|_ \    |______  /____/\____ \____ | |__|___|  /\___  /    \____|__  /__|_|  /\___  >__| |___|  / ____/____  > |__|
 #    \/              \/     \/     \/           \/           \/    \/         \//_____/             \/      \/     \/          \/\/         \/
-  # This plugin allows you to break budding amethyst.
+# This plugin allows you to break budding amethyst.
 # You can allow your players breaking them without silk touch (permission : bba.break) and with (permission : bba.silk);
 
 # If you set to false, you will be able to break them without any permissions.
